@@ -2,8 +2,8 @@
 using ld = long double;
 using i64 = long long;
 
-#define NO std::cout << "NO\n"
-#define YES std::cout << "YES\n"
+#define NO std::cout << "No\n"
+#define YES std::cout << "Yes\n"
 #define all(x) x.begin(), x.end()
 
 // std::default_random_engine Rand;
@@ -11,18 +11,20 @@ using i64 = long long;
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
 
 void solve() {
-	i64 n, k;
-	std::cin >> n >> k;
-	if (k == 1) {
-		std::cout << "1\n";
-		return;
+	int n;
+	std::cin >> n;
+	std::vector<std::vector<int>> mp(n + 1, std::vector<int> (n + 1));
+	for(int i = 1; i <= n;i++){
+		for(int j = 1; j <= i; j++){
+			std::cin >> mp[i][j];
+		}
 	}
-	i64 ans = 1;
-	while(n){
-		ans = std::max(ans, n % k);
-		n /= k;
+	int ans = mp[1][1];
+	for(int i = 2; i <= n; i++){
+		if(ans >= i) ans = mp[ans][i];
+		else ans = mp[i][ans];
 	}
-	std::cout << ans << "\n";
+	std::cout << ans << '\n';
 }
 
 int main() {
@@ -33,13 +35,12 @@ int main() {
 
     int _ = 1;
 
-    std::cin >> _;
+    // std::cin >> _;
     // scanf("%ld",&_);
     // std::cout<<std::fixed<<std::setprecision(2);
 
     while (_--) {
         solve();
     }
-    // system("pause");
     return 0;
 }

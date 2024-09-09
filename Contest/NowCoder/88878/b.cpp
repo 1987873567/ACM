@@ -2,8 +2,8 @@
 using ld = long double;
 using i64 = long long;
 
-#define NO std::cout << "NO\n"
-#define YES std::cout << "YES\n"
+#define NO std::cout << "No\n"
+#define YES std::cout << "Yes\n"
 #define all(x) x.begin(), x.end()
 
 // std::default_random_engine Rand;
@@ -11,17 +11,15 @@ using i64 = long long;
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
 
 void solve() {
-	i64 n, k;
-	std::cin >> n >> k;
-	if (k == 1) {
-		std::cout << "1\n";
-		return;
+	int n;
+	std::cin >> n;
+	std::vector<i64> v(n);
+	int ans = (n + 1)/ 2;
+
+	for(int i = 0; i < n; i++){
+		std::cin >> v[i];
 	}
-	i64 ans = 1;
-	while(n){
-		ans = std::max(ans, n % k);
-		n /= k;
-	}
+	if(n == 1) ans = -1;
 	std::cout << ans << "\n";
 }
 
@@ -33,13 +31,12 @@ int main() {
 
     int _ = 1;
 
-    std::cin >> _;
+    // std::cin >> _;
     // scanf("%ld",&_);
     // std::cout<<std::fixed<<std::setprecision(2);
 
     while (_--) {
         solve();
     }
-    // system("pause");
     return 0;
 }

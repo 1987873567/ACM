@@ -11,18 +11,52 @@ using i64 = long long;
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
 
 void solve() {
-	i64 n, k;
-	std::cin >> n >> k;
-	if (k == 1) {
-		std::cout << "1\n";
+	i64 s, n, k;
+	std::cin >> s >> n >> k;
+	std::vector<i64> v(n + 10);
+	if(k > n) {
+		NO;
 		return;
 	}
-	i64 ans = 1;
-	while(n){
-		ans = std::max(ans, n % k);
-		n /= k;
+	for(i64 i = 0; i < k; i++){
+		v[i] = i;
+		s -= i;
 	}
-	std::cout << ans << "\n";
+	if (k == 0) {
+		if(s >= n) {
+			YES;
+			for(i64 i = 0 ; i < n - 1; i++){
+				std::cout << "1 ";
+			}
+			std::cout << s - n + 1 << '\n';
+		}else{
+			NO;
+		}
+		return;
+	}
+	if(s < 0) {
+		NO;
+	} else {
+		if((n - k == 1 && s == k) || (n == k && s)){
+			NO;
+		} else {
+			if (s == k) {
+				if(s == 1) {
+					NO;
+					return;
+				}
+				v[k] = k - 1;
+				v[k + 1] = 1;
+			} else {
+				v[k] = s;
+			}
+			YES;
+			for(i64 i = 0; i < n; i++){
+				std::cout << v[i] << " \n"[i == n - 1];
+			}
+		}
+
+	}
 }
 
 int main() {
@@ -40,6 +74,5 @@ int main() {
     while (_--) {
         solve();
     }
-    // system("pause");
     return 0;
 }

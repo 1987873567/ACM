@@ -1,0 +1,21 @@
+[
+	{
+		"correct_answers":
+		[
+			"Ac\nNowcoder\nAc\nNowcoder\nNo"
+		],
+		"test": "5\nhttps://ac.nowcoder.com/acm/contest/88848\nhttps://www.nowcoder.com/users/214360960\nac.nowcoder.com/damedame\nwww.nowcoder.com\nwww.ac.nowcoder.com\n"
+	},
+	{
+		"test": "1\nac\n"
+	},
+	{
+		"test": "1\nac.nowcoder.com/a\n"
+	},
+	{
+		"test": "1\nhttps//\n"
+	},
+	{
+		"test": "1\nhttps//ac\n"
+	}
+]
