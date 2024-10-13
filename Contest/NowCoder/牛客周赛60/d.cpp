@@ -11,12 +11,28 @@ using i64 = long long;
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
 
 void solve() {
-	int T, M;
-	std::cin >> T >> M;
-	std::vector<int> w(M), val(M);
-	for(int i = 0; i < M; i++){
-		std::cin >> w[i] >> val[i];
+	i64 n;
+	std::cin >> n;
+	std::vector<i64> v(n);
+	
+	for(i64 i = 0; i < n; i++){
+		std::cin >> v[i];
 	}
+	
+	std::sort(all(v));
+	i64 sum = 1;
+	
+	for(i64 i = 0; i < n; i++){
+		if(v[i] > sum) break;
+		sum += v[i];
+	}
+
+	if(sum > n){
+		std::cout << "Cool!\n";
+	} else {
+		std::cout << sum << "\n";
+	}
+
 }
 
 int main() {
@@ -27,7 +43,7 @@ int main() {
 
     int _ = 1;
 
-    // std::cin >> _;
+    std::cin >> _;
     // scanf("%ld",&_);
     // std::cout<<std::fixed<<std::setprecision(2);
 

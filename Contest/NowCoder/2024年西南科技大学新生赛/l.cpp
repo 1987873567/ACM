@@ -11,12 +11,34 @@ using i64 = long long;
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
 
 void solve() {
-	int T, M;
-	std::cin >> T >> M;
-	std::vector<int> w(M), val(M);
-	for(int i = 0; i < M; i++){
-		std::cin >> w[i] >> val[i];
+	int n;
+	std::cin >> n;
+	std::string s;
+	std::cin >> s;
+
+	for(int i = 0; i < n; i++){
+		if(s[i] >= 'A' && s[i] <= 'Z'){
+			std::cout << "shameimaru\n";
+			return;
+		}
 	}
+	std::vector<int> v(26);
+	for(int i = 0; i < n; i++){
+		if(v[s[i] - 'a']){
+			std::cout << "shameimaru\n";
+			return;
+		}
+		v[s[i] - 'a'] = 1;
+		if(((n - i - 1) & 1) || (n - i - 1) < 2)continue;
+		int len = (n - i - 1) / 2;
+		if(s.substr(i + 1, len) == s.substr(i + len + 1)){
+			std::cout << "aya\n";
+			return;
+		}
+		// std::cerr <<  << " " <<  << "\n";
+	}
+	std::cout << "shameimaru\n";
+
 }
 
 int main() {
@@ -27,7 +49,7 @@ int main() {
 
     int _ = 1;
 
-    // std::cin >> _;
+    std::cin >> _;
     // scanf("%ld",&_);
     // std::cout<<std::fixed<<std::setprecision(2);
 

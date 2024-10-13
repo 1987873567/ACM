@@ -11,12 +11,20 @@ using i64 = long long;
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
 
 void solve() {
-	int T, M;
-	std::cin >> T >> M;
-	std::vector<int> w(M), val(M);
-	for(int i = 0; i < M; i++){
-		std::cin >> w[i] >> val[i];
+	int n, k;
+	std::cin >> n >> k;
+	std::string s;
+	std::cin >> s;
+	for(auto &i : s){
+		int flag = 'a';
+		if(i >= 'A' && i <= 'Z')flag = 'A';
+		int c = i - flag;
+		c -= k;
+		c += 26;
+		c %= 26;
+		i = c + flag;
 	}
+	std::cout << s << "\n";
 }
 
 int main() {
@@ -27,7 +35,7 @@ int main() {
 
     int _ = 1;
 
-    // std::cin >> _;
+    std::cin >> _;
     // scanf("%ld",&_);
     // std::cout<<std::fixed<<std::setprecision(2);
 

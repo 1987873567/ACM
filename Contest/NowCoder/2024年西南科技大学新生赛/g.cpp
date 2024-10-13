@@ -10,13 +10,17 @@ using i64 = long long;
 // std::uniform_int_distribution<int> r1(1, 10);
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
 
+ld get(ld a,ld b,ld c,ld d){
+    return std::sqrt((a-c)*(a-c)+(b-d)*(b-d));
+}
 void solve() {
-	int T, M;
-	std::cin >> T >> M;
-	std::vector<int> w(M), val(M);
-	for(int i = 0; i < M; i++){
-		std::cin >> w[i] >> val[i];
-	}
+    ld a,b,c,d;
+    std::cin >> a >> b >> c >> d;
+    if(get(-a,b,c,d) < get(a,-b,c,d)){
+    	std::cout << "y\n";
+    }else{
+    	std::cout << "x\n";
+    }
 }
 
 int main() {
@@ -27,7 +31,7 @@ int main() {
 
     int _ = 1;
 
-    // std::cin >> _;
+    std::cin >> _;
     // scanf("%ld",&_);
     // std::cout<<std::fixed<<std::setprecision(2);
 

@@ -11,11 +11,27 @@ using i64 = long long;
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
 
 void solve() {
-	int T, M;
-	std::cin >> T >> M;
-	std::vector<int> w(M), val(M);
-	for(int i = 0; i < M; i++){
-		std::cin >> w[i] >> val[i];
+	int n, q;
+	std::cin >> n >> q;
+	std::vector<i64> v(n + 1), sum(n + 1), x(n + 2);
+	for(int i = 1; i <= n; i++){
+		std::cin >> v[i];
+		sum[i] += sum[i - 1] + v[i];
+	}
+	for(int i = 1; i <= n; i++){
+		for(int j = i; j <= n; j++){
+			i64 y = sum[j] - sum[i - 1];
+			i64 t = std::sqrt(y);
+			if(t * t == y) x[i]++, x[j + 1]--;
+		}
+	}
+	for(int i = 1; i <= n; i++){
+		x[i] += x[i - 1];
+	}
+	while(q--){
+		int pos;
+		std::cin >> pos;
+		std::cout << x[pos] << "\n";
 	}
 }
 

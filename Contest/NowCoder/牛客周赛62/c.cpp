@@ -1,0 +1,68 @@
+#include <bits/stdc++.h>
+using ld = long double;
+using i64 = long long;
+
+#define NO std::cout << "No\n"
+#define YES std::cout << "Yes\n"
+#define all(x) x.begin(), x.end()
+
+// std::default_random_engine Rand;
+// std::uniform_int_distribution<int> r1(1, 10);
+// constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
+struct node{
+	i64 x, y, r;
+};
+
+void solve() {
+	int n, k;
+	std::cin >> n >> k;
+	std::vector<node> c;
+	auto getdis = [&](i64 x, i64 y)->ld{
+		return std::sqrt(x * x + y * y);
+	};
+
+	for(i64 i = 0; i < n; i++){
+		i64 a, b, r;
+		std::cin >> a >> b >> r;
+		ld dis = getdis(a, b);
+		if(dis < r){
+			c.push_back({a, b, r});
+		}
+	}
+	auto getr = [&](node x)->ld{
+		ld res = x.r * x.r;
+		res *= (x.r - getdis(x.x, x.y));
+		return res;
+	};
+	std::sort(all(c),[&](node x, node y){
+		return getr(x) < getr(y);
+	});
+
+	ld ans = 0;
+
+	if(c.size() > k){
+		for(int i = 0; i < (c.size() - k);i++){
+			ans += getr(c[i]);
+		}
+	}
+	ans *= 3.14159265358979324;
+	std::cout << ans << "\n";
+}
+
+int main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(0);
+    std::cout.tie(0);
+    // Rand.seed(time(0));
+
+    int _ = 1;
+
+    // std::cin >> _;
+    // scanf("%ld",&_);
+    std::cout<<std::fixed<<std::setprecision(10);
+
+    while (_--) {
+        solve();
+    }
+    return 0;
+}

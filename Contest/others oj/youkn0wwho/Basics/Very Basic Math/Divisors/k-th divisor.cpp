@@ -11,12 +11,24 @@ using i64 = long long;
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
 
 void solve() {
-	int T, M;
-	std::cin >> T >> M;
-	std::vector<int> w(M), val(M);
-	for(int i = 0; i < M; i++){
-		std::cin >> w[i] >> val[i];
+	i64 n, k;
+	std::cin >> n >> k;
+	std::vector<i64> v;
+	for (i64 i = 1; i * i <= n; i++) {
+		if(n % i == 0){
+			v.push_back(i);
+			if(i * i != n){
+				v.push_back(n / i);
+			}
+		}
 	}
+	std::sort(all(v));
+	k--;
+	i64 ans = -1;
+	if(k < v.size()){
+		ans = v[k];
+	}
+	std::cout << ans << "\n";
 }
 
 int main() {

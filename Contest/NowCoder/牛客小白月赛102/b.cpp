@@ -10,13 +10,16 @@ using i64 = long long;
 // std::uniform_int_distribution<int> r1(1, 10);
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
 
+ld a;
+ld dfs(int n){
+	if(n == 1)return a;
+	return a + (1.0 / dfs(n - 1));
+}
+
 void solve() {
-	int T, M;
-	std::cin >> T >> M;
-	std::vector<int> w(M), val(M);
-	for(int i = 0; i < M; i++){
-		std::cin >> w[i] >> val[i];
-	}
+	std::cin >> a;
+
+	std::cout << (a + std::sqrt(a * a + 4)) / 2  << "\n";
 }
 
 int main() {
@@ -27,9 +30,9 @@ int main() {
 
     int _ = 1;
 
-    // std::cin >> _;
+    std::cin >> _;
     // scanf("%ld",&_);
-    // std::cout<<std::fixed<<std::setprecision(2);
+    std::cout<<std::fixed<<std::setprecision(9);
 
     while (_--) {
         solve();

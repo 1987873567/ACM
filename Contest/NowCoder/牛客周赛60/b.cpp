@@ -11,12 +11,15 @@ using i64 = long long;
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
 
 void solve() {
-	int T, M;
-	std::cin >> T >> M;
-	std::vector<int> w(M), val(M);
-	for(int i = 0; i < M; i++){
-		std::cin >> w[i] >> val[i];
+	i64 x, y, ans = 0;
+	std::cin >> x >> y;
+
+	if(x > y){
+		ans = std::min(y + 1, x) + y;
+	} else {
+		ans = std::min(x + 1, y) + x;
 	}
+	std::cout << ans << "\n";
 }
 
 int main() {

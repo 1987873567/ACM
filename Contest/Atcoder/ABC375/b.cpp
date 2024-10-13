@@ -10,13 +10,26 @@ using i64 = long long;
 // std::uniform_int_distribution<int> r1(1, 10);
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
 
+struct point{
+	i64 x, y;
+	
+};
+ld dis(point a, point b){
+		return std::sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
+}
 void solve() {
-	int T, M;
-	std::cin >> T >> M;
-	std::vector<int> w(M), val(M);
-	for(int i = 0; i < M; i++){
-		std::cin >> w[i] >> val[i];
+	int n;
+	std::cin >> n;
+	ld ans = 0;
+	point o = {0, 0}, p = o;
+	for(int i = 0; i < n; i++){
+		point t;
+		std::cin >> t.x >> t.y;
+		ans += dis(p, t);
+		p = t;
 	}
+	ans += dis(p, o);
+	std::cout << ans << '\n';
 }
 
 int main() {
@@ -29,7 +42,7 @@ int main() {
 
     // std::cin >> _;
     // scanf("%ld",&_);
-    // std::cout<<std::fixed<<std::setprecision(2);
+    std::cout<<std::fixed<<std::setprecision(9);
 
     while (_--) {
         solve();

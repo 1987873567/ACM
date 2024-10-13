@@ -11,12 +11,9 @@ using i64 = long long;
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
 
 void solve() {
-	int T, M;
-	std::cin >> T >> M;
-	std::vector<int> w(M), val(M);
-	for(int i = 0; i < M; i++){
-		std::cin >> w[i] >> val[i];
-	}
+	int x;
+	std::cin >> x;
+	std::cout << (x >= 50 ? "wy" : "ty");
 }
 
 int main() {

@@ -11,11 +11,30 @@ using i64 = long long;
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
 
 void solve() {
-	int T, M;
-	std::cin >> T >> M;
-	std::vector<int> w(M), val(M);
-	for(int i = 0; i < M; i++){
-		std::cin >> w[i] >> val[i];
+	int n;
+	std::cin >> n;
+	std::vector<i64> v(n + 1), vis(n + 1), min(n + 1), id(n + 1);
+	std::vector<std::vector<int>> g(n + 1);
+
+	for(int i = 1; i <= n; i++) {
+		std::cin >> v[i];
+		min[i] = v[i];
+		id[i] = i;
+	}
+	for(int i = 2; i <= n; i++){
+		int a, b;
+		std::cin >> a >> b;
+		min[b] = min[a] = std::min(min[a], v[b]);
+		g[a].push_back(b);
+		g[b].push_back(a);
+	}
+
+	std::sort(all(id), [&] (int x, int y) {return v[x] < v[y];});
+	i64 ans = 0;
+	for(int i = 1; i <= n; i++){
+		if(vis[id[i]]) continue;
+		ans += std::min(v[id[i]], min[id[i]]);
+		
 	}
 }
 
@@ -27,7 +46,7 @@ int main() {
 
     int _ = 1;
 
-    // std::cin >> _;
+    std::cin >> _;
     // scanf("%ld",&_);
     // std::cout<<std::fixed<<std::setprecision(2);
 

@@ -113,11 +113,6 @@ struct Flow{
 		return a;
 	}
 	void print(int s, int t){
-		// auto p = edges();
-		// for(auto [f, t, c, fl] : p) {
-		// 	std::cout << f << " " << t << " " << c << " " << fl << "\n";
-		// }
-
 		for (int i = 0; i < e.size(); i += 2) {
 			int u = e[i + 1].to;
 			int v = e[i].to;

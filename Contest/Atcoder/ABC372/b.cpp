@@ -9,14 +9,30 @@ using i64 = long long;
 // std::default_random_engine Rand;
 // std::uniform_int_distribution<int> r1(1, 10);
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
-
+i64 p[22] = {1};
 void solve() {
-	int T, M;
-	std::cin >> T >> M;
-	std::vector<int> w(M), val(M);
-	for(int i = 0; i < M; i++){
-		std::cin >> w[i] >> val[i];
+	int n;
+	std::cin >> n;
+
+	for(int i = 1; i <= 20; i++){
+		p[i] = p[i - 1] * 3;
+		// std::cout << p[i] << "\n";
 	}
+	std::vector<int> ans;
+	while(n){
+		for(int i = 20; i >= 0; i--){
+			if(n >= p[i]){
+				n -= p[i];
+				ans.push_back(i);
+				break;
+			}
+		}
+	}
+	std::cout << ans.size() << "\n";
+	for(auto i : ans){
+		std::cout << i << " ";
+	}
+	
 }
 
 int main() {

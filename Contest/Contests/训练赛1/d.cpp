@@ -9,14 +9,15 @@ using i64 = long long;
 // std::default_random_engine Rand;
 // std::uniform_int_distribution<int> r1(1, 10);
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
+struct LCA_ST {
+    std::vector<std::vector<int>> g;
+    std::vector<int> deep, fa;
+    int n, tot, maxLog;
 
+   
+};
 void solve() {
-	int T, M;
-	std::cin >> T >> M;
-	std::vector<int> w(M), val(M);
-	for(int i = 0; i < M; i++){
-		std::cin >> w[i] >> val[i];
-	}
+	
 }
 
 int main() {

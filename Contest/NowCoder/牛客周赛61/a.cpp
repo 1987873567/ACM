@@ -11,12 +11,10 @@ using i64 = long long;
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
 
 void solve() {
-	int T, M;
-	std::cin >> T >> M;
-	std::vector<int> w(M), val(M);
-	for(int i = 0; i < M; i++){
-		std::cin >> w[i] >> val[i];
-	}
+	int y,m,d;
+	char c;
+	std::cin >> y >> c >> m >> c >> d;
+	std::cout << std::fixed << std::setw(4) << std::setfill('0') << y + 10 << "-" <<std::fixed << std::setw(2) << std::setfill('0')<< m << "-"<< std::fixed << std::setw(2) << std::setfill('0') << d << "\n";
 }
 
 int main() {

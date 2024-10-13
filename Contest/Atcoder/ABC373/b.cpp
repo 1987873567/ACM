@@ -11,12 +11,16 @@ using i64 = long long;
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
 
 void solve() {
-	int T, M;
-	std::cin >> T >> M;
-	std::vector<int> w(M), val(M);
-	for(int i = 0; i < M; i++){
-		std::cin >> w[i] >> val[i];
+	std::string s, ss = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	std::cin >> s;
+	int ans = 0, p = 0;
+
+	for(int i = 0; i < 26; i++){
+		int t = s.find(ss[i]);
+		ans += abs(t - p);
+		p = t;
 	}
+	std::cout << ans - s.find('A') << "\n";
 }
 
 int main() {

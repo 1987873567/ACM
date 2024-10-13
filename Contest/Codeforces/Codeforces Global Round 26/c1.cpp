@@ -11,12 +11,17 @@ using i64 = long long;
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
 
 void solve() {
-	int T, M;
-	std::cin >> T >> M;
-	std::vector<int> w(M), val(M);
-	for(int i = 0; i < M; i++){
-		std::cin >> w[i] >> val[i];
+	int n;
+	std::cin >> n;
+	std::vector<std::array<i64, 3>> dp(n + 1);
+	for (i64 i = 1, x; i <= n; i++){
+		std::cin >> x;
+		// 0直接+ 1abs 2当前最大 
+		dp[i][0] = dp[i - 1][0] + x;
+		dp[i][1] = dp[i - 1][2] + x;
+		dp[i][2] = std::max(abs(dp[i][0]), abs(dp[i][1]));
 	}
+	std::cout << dp[n][2] << "\n";
 }
 
 int main() {
@@ -27,7 +32,7 @@ int main() {
 
     int _ = 1;
 
-    // std::cin >> _;
+    std::cin >> _;
     // scanf("%ld",&_);
     // std::cout<<std::fixed<<std::setprecision(2);
 

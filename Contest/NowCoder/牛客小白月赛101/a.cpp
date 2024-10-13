@@ -5,21 +5,29 @@ using i64 = long long;
 #define NO std::cout << "No\n"
 #define YES std::cout << "Yes\n"
 #define all(x) x.begin(), x.end()
-
+#define int long long
 // std::default_random_engine Rand;
 // std::uniform_int_distribution<int> r1(1, 10);
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
 
 void solve() {
-	int T, M;
-	std::cin >> T >> M;
-	std::vector<int> w(M), val(M);
-	for(int i = 0; i < M; i++){
-		std::cin >> w[i] >> val[i];
+	int n, k;
+	std::cin >> n >> k;
+	std::vector<i64> v(n + 1), sum(n + 1);
+
+	for(int i = 1; i <= n; i++){
+		std::cin >> v[i];
+		sum[i] += sum[i - 1] + v[i]; 
 	}
+	i64 ans = 0;
+	int len = n - k;
+	for(int i = len; i <= n; i++){
+		ans = std::max(ans, sum[i] - sum[i - len]);
+	}
+	std::cout << ans << "\n";
 }
 
-int main() {
+signed main() {
     std::ios::sync_with_stdio(false);
     std::cin.tie(0);
     std::cout.tie(0);

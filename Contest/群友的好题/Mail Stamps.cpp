@@ -11,11 +11,29 @@ using i64 = long long;
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
 
 void solve() {
-	int T, M;
-	std::cin >> T >> M;
-	std::vector<int> w(M), val(M);
-	for(int i = 0; i < M; i++){
-		std::cin >> w[i] >> val[i];
+	int n;
+	std::cin >> n;
+	std::vector<std::array<int,2>> v(n);
+	std::vector<int> vv;
+
+	for(int i = 0; i < n; i++){
+		std::cin >> v[i][0] >> v[i][1];
+		vv.push_back(v[i][0]);
+		vv.push_back(v[i][1]);
+	}
+	std::sort(all(vv));
+	vv.erase(std::unique(all(vv)), vv.end());
+	std::vector<std::vector<std::array<int, 2>>> g(n * 2);
+	std::unordered_map<int, int> id;
+	for(int i = 0; i < n; i++){
+		auto [a, b] = v[i];
+		a = std::lower_bound(all(vv), a) - vv.begin();
+		b = std::lower_bound(all(vv), b) - vv.begin();
+		id[a] = v[i][0];
+		id[b] = v[i][1];
+
+		g[a].push_back({b, i});
+		g[b].push_back({a, i});
 	}
 }
 

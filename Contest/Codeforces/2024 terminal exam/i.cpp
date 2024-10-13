@@ -9,14 +9,25 @@ using i64 = long long;
 // std::default_random_engine Rand;
 // std::uniform_int_distribution<int> r1(1, 10);
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
-
+std::map<char,int> id{{'(', -1},{')', -2},{'^', -3}, {'*', -4}, {'+', -5}};
 void solve() {
-	int T, M;
-	std::cin >> T >> M;
-	std::vector<int> w(M), val(M);
-	for(int i = 0; i < M; i++){
-		std::cin >> w[i] >> val[i];
+	std::string s;
+	std::cin >> s;
+	std::list<i64> l;
+	int n = s.size();
+	for(int i = 0; i < n;){
+		if(s[i] >= '0' && s[i] <= '9'){
+			i64 x = 0;
+			while(s[i] >= '0' && s[i] <= '9'){
+				x = x * 10 + s[i] - '0';
+				i++;
+			}
+			l.push_back(x);
+		} else {
+			l.push_back(id[s[i++]]);
+		}
 	}
+
 }
 
 int main() {
@@ -27,7 +38,7 @@ int main() {
 
     int _ = 1;
 
-    // std::cin >> _;
+    std::cin >> _;
     // scanf("%ld",&_);
     // std::cout<<std::fixed<<std::setprecision(2);
 

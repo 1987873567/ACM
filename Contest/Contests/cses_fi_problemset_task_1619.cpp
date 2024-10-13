@@ -11,13 +11,38 @@ using i64 = long long;
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
 
 void solve() {
-	int T, M;
-	std::cin >> T >> M;
-	std::vector<int> w(M), val(M);
-	for(int i = 0; i < M; i++){
-		std::cin >> w[i] >> val[i];
+	int n;
+	std::cin >> n;
+	std::vector<std::array<int,2>> v(n * 2);
+	for(int i = 0; i < n; i++){
+		int l, r;
+		std::cin >> l >> r;
+		v[i] = {l, i};
+		v[i + n] = {r, i};
 	}
+
+	std::sort(all(v), [&] (auto &a, auto &b){
+		if(a[0] == b[0]){
+			return a[1] > b[1];
+		}
+		return a[0] < b[0];
+	});
+
+	std::set<int> s;
+	int ans = 0;
+	for(auto [x, i] : v){
+		if(s.count(i)){
+			s.erase(i);
+		}else{
+			s.insert(i);
+		}
+		ans = std::max(ans, (int)s.size());
+	}
+	std::cout << ans << "\n";
+
+
 }
+
 
 int main() {
     std::ios::sync_with_stdio(false);

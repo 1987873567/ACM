@@ -9,13 +9,24 @@ using i64 = long long;
 // std::default_random_engine Rand;
 // std::uniform_int_distribution<int> r1(1, 10);
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
-
+bool ask(const std::string &t) {
+    std::cout << "? " << t << "\n";
+    std::cout.flush(); 
+    int response;
+    std::cin >> response;
+    return response == 1;
+}
 void solve() {
-	int T, M;
-	std::cin >> T >> M;
-	std::vector<int> w(M), val(M);
-	for(int i = 0; i < M; i++){
-		std::cin >> w[i] >> val[i];
+	int n;
+	std::cin >> n;
+	std::string ans = "";
+	for(int i = 0; i < n; i++){
+		std::string x = ans + '1', y = ans + '0';
+		if(ask(x)){
+			ans = x;
+		} else {
+			
+		}
 	}
 }
 

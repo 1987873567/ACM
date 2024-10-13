@@ -9,14 +9,35 @@ using i64 = long long;
 // std::default_random_engine Rand;
 // std::uniform_int_distribution<int> r1(1, 10);
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
+std::map<std::string, int> ans{
+	{"111111",7},
+	{"110110",7},
+	{"011011",7},
+	{"001001",7},
+	{"100100",7},
+	{"000000",7},
 
+	{"111010", 1},
+	{"010111", 1},
+
+	{"010111", 1},
+	{"010111", 1},
+
+	{"010111", 1},
+	{"010111", 1},
+
+	{"010111", 1},
+	{"010111", 1},
+
+	{"010111", 1},
+	{"010111", 1},
+	
+	{"010111", 1},
+	{"010111", 1},
+	
+	
+};
 void solve() {
-	int T, M;
-	std::cin >> T >> M;
-	std::vector<int> w(M), val(M);
-	for(int i = 0; i < M; i++){
-		std::cin >> w[i] >> val[i];
-	}
 }
 
 int main() {
