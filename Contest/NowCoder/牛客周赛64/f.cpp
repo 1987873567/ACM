@@ -68,7 +68,7 @@ struct LCA {
         return res + 1;
     }
     int q_tow_dis(int u, int v){
-        return dis[u] + dis[v] - dis[query_lca(u, v)] * 2;
+    	return dis[u] + dis[v] - dis[query_lca(u, v)] * 2;
     }
     int q_fa_kth(int x, int len){
         for(int i = maxLog; i >= 0; i--){
@@ -78,39 +78,57 @@ struct LCA {
         }
         return x;
     }
-   
+    int q_dis_one(int x){
+    	return dis[x];
+    }
 };
 void solve() {
 	int n, q;
-    std::cin >> n;
-    std::vector<std::vector<int>> g(n);
-    for(int i = 1; i < n; i++){
-        int a, b;
-        std::cin >> a >> b;
-        a--, b--;
-        g[b].push_back(a);
-        g[a].push_back(b);
-    }
+	std::cin >> n >> q;
+	std::vector<std::vector<int>> g(n);
+	for(int i = 1; i < n; i++){
+		int a, b;
+		std::cin >> a >> b;
+		a--, b--;
+		g[a].push_back(b);
+		g[b].push_back(a);
+	}
+	std::vector<i64> size(n), sum(n), dp(n);
 
-    LCA lca(n, g, 0);
-    std::cin >> q;
-    for(int i = 0; i < q; i++){
-        int a, b, c;
-        std::cin >> a >> b >> c;
-        a--, b--;
-        int da = lca.q_dis(a, b);
-        int db = lca.q_dis(b, a);
-        // std::cout << da << ' ' << db << '\n';
-        if(c <= da){
-            std::cout << lca.q_fa_kth(a, c) + 1 << "\n";
-        } else if(da + db < c){
-            std::cout << b + 1 << "\n";
-        } else {
-            std::cout << lca.q_fa_kth(b, db - c + da) + 1<< "\n";
-        }
+	auto dfs = [&] (auto &&self, int x, int fa) -> void{
+		size[x] = 1;
+		for(auto y : g[x]){
+			if(y ^ fa){
+                sum[y] = sum[x] + 1;
+                dp[0] += sum[y];
+				self(self, y, x);
+				size[x] += size[y];
+			}
+		}
+	};
 
-    }
+	dfs(dfs, 0, 0);
 
+	auto dfs1 = [&](auto &&self, int x, int fa) -> void{
+		for(int y : g[x]){
+			if(y ^ fa){
+				dp[y] = dp[x] + n - size[y] * 2;
+				self(self, y, x);
+			}
+		}
+	};
+
+	dfs1(dfs1, 0, 0);
+
+	LCA lca(n, g, 0);
+
+	while(q--){
+		int a, b;
+		std::cin >> a >> b;
+		a--, b--;
+        // std::cout /*<< sum[a] << " " << sum[b] << " "*/ << dp[a] << " " << dp[b] << " " << lca.q_tow_dis(a, b) << "\n";
+		std::cout << (dp[a] + dp[b] - 1ll * n * lca.q_tow_dis(a, b)) / 2 << "\n";
+	}
 }
 
 int main() {
