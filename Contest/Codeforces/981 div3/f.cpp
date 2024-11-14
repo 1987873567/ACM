@@ -11,28 +11,12 @@ using i64 = long long;
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
 
 void solve() {
-	int n, k;
+	i64 n, k;
 	std::cin >> n >> k;
-	std::vector<int> v(n + 1);
-	for(int i = 1; i <= n; i++){
-		std::cin >> v[i];
+	i64 a = 0, b = 1, ans = 1;
+	while(b != 0){
+		
 	}
-
-	std::vector<std::pair<int,int>> q(k);
-	for(int i = 0; i < n; i++){
-		int a, b;
-		std::cin >> a >> b;
-		q[i] = {a, b};
-	}
-	std::sort(all(q));
-
-
-	int l = 1, r = 1;
-	std::map<int,int> c;
-	for (int i = 0; i < k; i++){
-		while(l < q[i].first) 
-	}
-
 }
 
 int main() {

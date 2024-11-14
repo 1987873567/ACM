@@ -14,41 +14,33 @@ void solve() {
 	int n;
 	std::cin >> n;
 	std::vector<i64> v(n);
+
 	for(int i = 0; i < n; i++){
 		std::cin >> v[i];
 	}
+
 	i64 ljc[3], lyc[3];
 	for(int i = 0; i < 3; i++)std::cin >> ljc[i];
 	for(int i = 0; i < 3; i++)std::cin >> lyc[i];
+
 	for(int i = 0; i < ((n + 1) / 2); i++)ljc[1] += v[i];
 	for(int i = ((n + 1) / 2); i < n; i++)lyc[2] -= v[i];
+
 	lyc[2] = std::max(lyc[2], 0ll);
 	lyc[1] = (lyc[1] - (i64)(ljc[2] / 2 + 0.5));
 	ljc[1] = (ljc[1] - (i64)(lyc[2] / 2 + 0.5));
-	if((!ljc[1] && !lyc[1]) || (!ljc[1])){
-		NO;
-		return;
-	}
-	if(!lyc[1]){
-		YES;
-		return;
-	}
+
+	if((!ljc[1] && !lyc[1]) || (!ljc[1])) return NO, void();
+	if(!lyc[1]) return YES, void();
+
 	i64 a = (ljc[0] + lyc[1] - 1) / lyc[1];
 	i64 b = (lyc[0] + ljc[1] - 1) / ljc[1];
-	if(n & 1){
-		if(a > b){
-			YES;
-		}else{
-			NO;
-		}
+
+	if(a > b || ((n % 2 == 0) && (a >= b))){
+		YES;
 	} else {
-		if(a >= b){
-			YES;
-		}else{
-			NO;
-		}
+		NO;
 	}
-	
 }
 
 int main() {
