@@ -12,6 +12,7 @@ std::uniform_int_distribution<int> r1(1, 8);
 
 void solve() {
 	std::cout << r1(Rand) << "\n";
+    std::cout << "Hello world!\n";
 }
 
 int main() {
