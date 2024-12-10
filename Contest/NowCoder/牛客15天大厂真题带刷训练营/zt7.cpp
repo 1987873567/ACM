@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using ld = long double;
 using i64 = long long;
 
@@ -9,9 +9,32 @@ using i64 = long long;
 // std::default_random_engine Rand;
 // std::uniform_int_distribution<int> r1(1, 10);
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
-
+bool ask(int x){
+	for(int i = 2; i * i <= x; i++){
+		if(x % i == 0) return 1;
+	}
+	return 0;
+}
 void solve() {
-	std::cout << "Hello World!";
+	int n;
+	std::cin >> n;
+	std::vector<int> v(n + 1);
+	std::iota(all(v), 0);
+	int flag = 0;
+	for(int i = 1; i <= n; i++){
+		if(ask(1 + i)){
+			std::swap(v[1], v[i]);
+			flag = 1;
+			break;
+		}
+	}
+	if(flag){
+		for(int i = 1; i <= n; i++){
+			std::cout << v[i] << " \n"[i == n];
+		}
+	} else {
+		std::cout << "-1\n";
+	}
 }
 
 int main() {

@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using ld = long double;
 using i64 = long long;
 
@@ -11,7 +11,17 @@ using i64 = long long;
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
 
 void solve() {
-	std::cout << "Hello World!";
+	std::string s;
+	std::cin >> s;
+	int ans = 0;
+	for(auto i : s){
+		if(i == '0' || i == '6' || i == '9'){
+			ans++;
+		} else if(i == '8'){
+			ans += 2;
+		}
+	}
+	std::cout << ans << "\n";
 }
 
 int main() {

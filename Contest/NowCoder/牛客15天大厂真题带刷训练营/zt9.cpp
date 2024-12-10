@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using ld = long double;
 using i64 = long long;
 
@@ -11,7 +11,7 @@ using i64 = long long;
 // constexpr int d[4][2] = {-1, 0, 0, 1, 1, 0, 0, -1};
 
 void solve() {
-	std::cout << "Hello World!";
+	
 }
 
 int main() {
