@@ -24,7 +24,7 @@ subprocess.run(["git", "remote", "set-url", "origin", repo_url])
 
 # Git 推送
 try:
-    subprocess.run(["git", "push", "origin", "main"], check=True, input=b"yes\n", text=True)
+    subprocess.run(["git", "push", "origin", "main"], check=True, input="yes\n", text=True)
 except subprocess.CalledProcessError as e:
     print(f"Git push failed: {e}")
 
