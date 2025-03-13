@@ -15,7 +15,13 @@ void solve() {
     int n;
     std::cin >> n;
     std::map<int, int> q;
-    
+    int ans = 0;
+    for(int i = 0, x; i < n; i++){
+        std::cin >> x;
+        q[x]++;
+        ans = std::max(ans, q[x]);
+    }
+    std::cout << ans << "\n";
 }
 
 signed main() {
