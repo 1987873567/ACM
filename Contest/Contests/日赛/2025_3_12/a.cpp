@@ -19,6 +19,7 @@ void solve() {
         std::cin >> x;
         m[x]++;
     }
+    
 }
 
 signed main() {
