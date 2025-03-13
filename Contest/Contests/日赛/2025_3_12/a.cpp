@@ -12,7 +12,8 @@ using i64 = long long;
 // constexpr int d8[8][2] = {-1, 0, -1, 1, 0, 1, 1, 1, 1, 0, 1, -1, 0, -1, -1, -1};
 
 void solve() {
-    
+    int n;
+    std::cin >> n;
 }
 
 signed main() {
