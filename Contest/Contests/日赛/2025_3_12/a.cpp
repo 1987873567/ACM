@@ -14,6 +14,11 @@ using i64 = long long;
 void solve() {
     int n;
     std::cin >> n;
+    std::map<int, int> m;
+    for(int i = 0, x; i < n; i++){
+        std::cin >> x;
+        m[x]++;
+    }
 }
 
 signed main() {
